@@ -155,18 +155,18 @@ def main():
         #calibrating to range (-100, 100) and converting to polar
         cal_x = calibrate(x_value)
         cal_y = calibrate(y_value)
-        R, angle = polar_coor(cal_x/100, cal_y/100)
+        r, angle = polar_coor(cal_x/100, cal_y/100)
 
         #position Assignment
-        pos = position(R, angle)
+        pos = position(r, angle)
 
         #color wheel:
-        update_colour(pos, R)
+        update_colour(pos, r)
 
         #send directions to esp
-        direction = send_direction(pos, R)
+        direction = send_direction(pos, r)
 
         #print values to the consol for error and calibration
-        print(f"X:{x_value}, {cal_x}, Y:{y_value}, {cal_y},  R:{R}, theta:{angle}, position:{pos}, direction:{direction}")
+        print(f"X:{x_value}, {cal_x}, Y:{y_value}, {cal_y},  R:{r}, theta:{angle}, position:{pos}, direction:{direction}")
 
         time.sleep(0.1) # small delay, not strictly necessary
